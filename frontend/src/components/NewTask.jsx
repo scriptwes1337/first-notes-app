@@ -48,7 +48,7 @@ export const NewTask = () => {
 
   if (!display) {
     return (
-      <button className="btn btn-accent m-8" onClick={() => setDisplay(true)}>
+      <button className="btn btn-accent btn-sm m-8" onClick={() => setDisplay(true)}>
         Create Task
       </button>
     );

@@ -18,7 +18,7 @@ export const Navbar = ({ user }) => {
           </p>
         </div>
         <div className="flex-none">
-          <button onClick={handleLogout} className="btn btn-secondary btn-outline">
+          <button onClick={handleLogout} className="btn btn-secondary btn-outline btn-sm">
             Logout
           </button>
         </div>

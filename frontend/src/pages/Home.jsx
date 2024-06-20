@@ -23,9 +23,12 @@ export const Home = () => {
     // Verifies JWT by posting to the verify API route
     checkUserValidity(dispatch, navigate);
 
-    axios
-      .get(`/api/tasks/${currentUser.id}`)
-      .then((res) => dispatch(setTasks(res.data)));
+ if (currentUser && currentUser.id) {
+   axios
+     .get(`/api/tasks/${currentUser.id}`)
+     .then((res) => dispatch(setTasks(res.data)))
+     .catch((error) => console.error(error));
+ }
   }, [currentUser]);
 
   return (
