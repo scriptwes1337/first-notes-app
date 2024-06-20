@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "server": "NODE_ENV=development node --watch ./bin/www",
+    "production": "NODE_ENV=production node --watch ./bin/www",
     "server:test": "NODE_ENV=test node --watch ./bin/www",
     "test": "NODE_ENV=test node --test"
   },
