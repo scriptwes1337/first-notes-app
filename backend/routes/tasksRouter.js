@@ -13,6 +13,16 @@ router.get("/all", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  try {
+    const requestedId = req.params["id"];
+    const requestedUser = await User.findById(requestedId).populate("tasks")
+    res.status(200).json(requestedUser.tasks);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+});
+
 router.post("/create", async (req, res) => {
   const { name, description, priority, deadline } = req.body;
   try {

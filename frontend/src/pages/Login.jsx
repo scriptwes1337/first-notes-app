@@ -9,6 +9,7 @@ import {
 import axios from "axios";
 import { setCurrentUser } from "../features/currentUser/currentUserSlice";
 import NotificationComponent from "../components/NotificationComponent";
+import checkUserValidity from "../../helpers/checkUserValidity";
 
 export const Login = () => {
   const errorMessage = useSelector((state) => state.message.errorMessage);

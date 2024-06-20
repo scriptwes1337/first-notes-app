@@ -23,14 +23,20 @@ export const Task = ({ task }) => {
       </h3>
       <p className="text-lg text-gray-600 dark:text-gray-400 mb-2">
         {task.description ? (
-          <span> Description: {task.description}</span>
+          <span>
+            {" "}
+            Description: <span className="text-white">{task.description}</span>
+          </span>
         ) : (
           <span className="italic">No description</span>
         )}
       </p>
       <p className="text-lg text-gray-600 dark:text-gray-400 mb-2">
-        {task.priority === "None" ? (
-          <span> Priority: {task.priority}</span>
+        {task.priority !== "None" ? (
+          <span>
+            {" "}
+            Priority: <span className="text-white">{task.priority}</span>
+          </span>
         ) : (
           <span className="italic">No priority</span>
         )}
@@ -39,7 +45,10 @@ export const Task = ({ task }) => {
         {task.deadline ? (
           <span>
             {" "}
-            Deadline: {new Date(task.deadline).toLocaleDateString("en-sg")}
+            Deadline:{" "}
+            <span className="text-white">
+              {new Date(task.deadline).toLocaleDateString("en-sg")}
+            </span>
           </span>
         ) : (
           <span className="italic">No deadline</span>

@@ -22,11 +22,11 @@ export const Home = () => {
   useEffect(() => {
     // Verifies JWT by posting to the verify API route
     checkUserValidity(dispatch, navigate);
-  }, []);
 
-  useEffect(() => {
-    axios.get("/api/tasks/all").then((res) => dispatch(setTasks(res.data)));
-  }, []);
+    axios
+      .get(`/api/tasks/${currentUser.id}`)
+      .then((res) => dispatch(setTasks(res.data)));
+  }, [currentUser]);
 
   return (
     <div>
@@ -38,6 +38,7 @@ export const Home = () => {
       <NewTask />
 
       <div className="flex flex-col">
+        <p className="text-2xl p-4 text-white">Your tasks:</p>
         {tasks.map((task) =>
           task ? <Task task={task} key={task.id} /> : null
         )}
