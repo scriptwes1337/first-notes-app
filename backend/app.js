@@ -43,6 +43,10 @@ app.use("/api/tasks", tasksRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/test", testRouter);
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
