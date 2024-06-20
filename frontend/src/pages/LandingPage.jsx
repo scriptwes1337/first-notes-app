@@ -13,7 +13,7 @@ export const LandingPage = () => {
           <Link to="/login" className="btn btn-primary w-1/2 mr-2">
             Login
           </Link>
-          <Link to="/register" className="btn btn-primary w-1/2 ml-2">
+          <Link to="/register" className="btn btn-primary w-1/2 mr-2">
             Register
           </Link>
         </div>
