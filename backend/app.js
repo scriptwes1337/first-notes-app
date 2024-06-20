@@ -23,7 +23,7 @@ const main = async () => {
 
 main();
 
-const notesRouter = require("./routes/notesRouter");
+const tasksRouter = require("./routes/tasksRouter");
 const usersRouter = require("./routes/usersRouter");
 const testRouter = require("./routes/testRouter");
 
@@ -39,7 +39,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/api/notes", notesRouter);
+app.use("/api/tasks", tasksRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/test", testRouter);
 

@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 
 router.get("/all", async (req, res) => {
   try {
-    const data = await User.find();
+    const data = await User.find().populate("tasks");
     res.status(200).json(data);
   } catch (error) {
     res.status(404).json({ error: error.message });
@@ -65,7 +65,7 @@ router.post("/login", async (req, res) => {
     const existingUser = await User.findOne({ username });
 
     if (!existingUser) {
-      return res.status(400).json({ error: "Oops! This user doesn't exist." });
+      return res.status(400).json({ error: "Oops! This user doesn't exist..." });
     }
 
     const correctPassword = await bcrypt.compare(

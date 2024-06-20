@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const taskSchema = new mongoose.Schema({
-  title: String,
+  name: String,
   description: String,
-  date: Date,
+  deadline: Date,
   priority: String,
   user: {
     type: mongoose.Schema.Types.ObjectId,

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { setCurrentUser } from "../src/features/currentUser/currentUserSlice";
-import { displayErrorMessage } from "../src/features/errorMessage/errorMessageSlice";
+import { displayErrorMessage } from "../src/features/message/messageSlice";
 
 const checkUserValidity = async (dispatch, navigate) => {
   const userDetails = JSON.parse(localStorage.getItem("currentUser"));

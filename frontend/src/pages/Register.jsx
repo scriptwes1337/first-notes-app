@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { displayErrorMessage } from "../features/errorMessage/errorMessageSlice";
+import { displayErrorMessage, displaySuccessMessage } from "../features/message/messageSlice";
+import NotificationComponent from "../components/NotificationComponent";
 
 export const Register = () => {
-  const errorMessage = useSelector((state) => state.errorMessage);
+  const errorMessage = useSelector((state) => state.message.errorMessage);
+  const successMessage = useSelector((state) => state.message.successMessage)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -24,6 +26,7 @@ export const Register = () => {
       });
 
       if (newUser.status === 201) {
+        dispatch(displaySuccessMessage("Account created successfully 🎉"));
         return navigate("/login");
       }
     } catch (error) {
@@ -32,25 +35,53 @@ export const Register = () => {
   };
 
   return (
-    <>
-      <form onSubmit={handleRegister}>
-        <div>
-          <label htmlFor="name">Name</label>
-          <input type="text" name="name" id="nameInput" />
-        </div>
-        <div>
-          <label htmlFor="username">Username</label>
-          <input type="text" name="username" id="usernameInput" />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input type="text" name="password" id="passwordInput" />
-        </div>
-        <div>
-          <button type="submit">Register</button>
-        </div>
+    <div className="container mx-auto max-w-screen-sm p-2">
+      <NotificationComponent
+        errorMessage={errorMessage}
+        successMessage={successMessage}
+      />
+      <p className="text-3xl my-6">Create an account</p>
+      <form onSubmit={handleRegister} className="form-control">
+        <label htmlFor="name" className="label">
+          Name
+        </label>
+        <input
+          type="text"
+          name="name"
+          id="nameInput"
+          className="input input-primary"
+        />
+
+        <label htmlFor="username" className="label">
+          Username
+        </label>
+        <input
+          type="text"
+          name="username"
+          id="usernameInput"
+          className="input input-primary"
+        />
+
+        <label htmlFor="password" className="label">
+          Password
+        </label>
+        <input
+          type="text"
+          name="password"
+          id="passwordInput"
+          className="input input-primary"
+        />
+
+        <button type="submit" className="btn btn-primary my-5">
+          Register
+        </button>
       </form>
-      {errorMessage && <p>{errorMessage.message}</p>}
-    </>
+      <p>
+        Already have an account?{" "}
+        <Link to="/login" className="underline">
+          Login
+        </Link>
+      </p>
+    </div>
   );
 };
