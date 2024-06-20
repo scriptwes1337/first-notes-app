@@ -39,6 +39,7 @@ export const Register = () => {
       <NotificationComponent
         errorMessage={errorMessage}
         successMessage={successMessage}
+        dispatch={dispatch}
       />
       <p className="text-3xl my-6">Create an account</p>
       <form onSubmit={handleRegister} className="form-control">
@@ -66,7 +67,7 @@ export const Register = () => {
           Password
         </label>
         <input
-          type="text"
+          type="password"
           name="password"
           id="passwordInput"
           className="input input-primary"

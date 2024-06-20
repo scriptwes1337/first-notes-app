@@ -54,6 +54,7 @@ export const Login = () => {
       <NotificationComponent
         errorMessage={errorMessage}
         successMessage={successMessage}
+        dispatch={dispatch}
       />
       <p className="text-3xl my-6">Login</p>
       <form onSubmit={handleLogin} className="form-control">
@@ -71,7 +72,7 @@ export const Login = () => {
           Password
         </label>
         <input
-          type="text"
+          type="password"
           name="password"
           id="passwordInput"
           className="input input-primary"

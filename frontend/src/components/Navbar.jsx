@@ -1,12 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setSuccessMessage } from "../features/message/messageSlice";
 
 export const Navbar = ({ user }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.clear();
-    navigate("/")
+    navigate("/");
+    dispatch(setSuccessMessage("Logged out successfully."));
   };
 
   return (
@@ -18,7 +22,10 @@ export const Navbar = ({ user }) => {
           </p>
         </div>
         <div className="flex-none">
-          <button onClick={handleLogout} className="btn btn-secondary btn-outline btn-sm">
+          <button
+            onClick={handleLogout}
+            className="btn btn-secondary btn-outline btn-sm"
+          >
             Logout
           </button>
         </div>

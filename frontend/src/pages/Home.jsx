@@ -37,6 +37,7 @@ export const Home = () => {
       <NotificationComponent
         errorMessage={errorMessage}
         successMessage={successMessage}
+        dispatch={dispatch}
       />
       <NewTask />
 
