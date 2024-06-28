@@ -1,6 +1,4 @@
-
-# TaskFlow
-This is one of my first few full stack apps I made as practice.
+# Notes App
 
 Live at https://taskflow-to-do-app.onrender.com/
 
